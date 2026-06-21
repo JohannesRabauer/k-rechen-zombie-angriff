@@ -1,0 +1,34 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0f0a;color:#e0e0e0;font-family:system-ui,sans-serif;min-height:100vh;display:flex;justify-content:center;align-items:center}
+#app{width:100%;max-width:600px;min-width:320px;padding:20px;text-align:center}
+.screen{display:none}.screen.active{display:block}
+h1{font-size:2em;margin-bottom:20px;text-shadow:0 0 10px #00ff00}
+button{background:#1a3a1a;color:#00ff00;border:2px solid #00ff00;padding:12px 32px;font-size:1.2em;border-radius:8px;cursor:pointer;min-height:44px;min-width:44px;transition:background .2s}
+button:hover,button:active{background:#2a5a2a}
+.highscore{margin-top:20px;color:#888}
+#hud{display:flex;justify-content:space-between;font-size:1.3em;margin-bottom:10px}
+#timer-bar{width:100%;height:12px;background:#333;border-radius:6px;overflow:hidden;margin-bottom:20px}
+#timer-fill{height:100%;width:100%;background:#00ff00;transition:width .1s linear,background .3s}
+#timer-fill.yellow{background:#ffcc00}
+#timer-fill.red{background:#ff3333}
+#zombie-area{background:#1a1a2e;border:2px solid #333;border-radius:12px;padding:30px 20px;margin-bottom:20px;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#zombie-emoji{font-size:4em;margin-bottom:15px}
+#zombie-task{font-size:2em;font-weight:bold;color:#fff}
+#input-area{display:flex;gap:10px;justify-content:center}
+#answer-input{background:#111;color:#fff;border:2px solid #00ff00;padding:10px 15px;font-size:1.3em;border-radius:8px;width:60%;min-height:44px;text-align:center}
+#answer-input:focus{outline:none;border-color:#00ff88;box-shadow:0 0 8px #00ff0066}
+#gameover-screen p{font-size:1.3em;margin:10px 0}
+#new-record{color:#ffd700;font-size:1.5em;animation:pulse 1s infinite}
+.hidden{display:none!important}
+
+@keyframes slideIn{from{transform:translateX(100%) scale(0.5);opacity:0}to{transform:translateX(0) scale(1);opacity:1}}
+@keyframes hit{0%{background:#1a1a2e}50%{background:#004400}100%{background:#1a1a2e}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+#zombie-area.slide-in{animation:slideIn .4s ease-out}
+#zombie-area.hit{animation:hit .4s}
+#zombie-area.shake{animation:shake .4s}
+#feedback{font-size:1.3em;min-height:2em;margin-top:15px;font-weight:bold}
+#feedback.correct{color:#00ff00}
+#feedback.wrong{color:#ff3333}

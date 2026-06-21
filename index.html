@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rechen-Zombie-Angriff</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="start-screen" class="screen active">
+    <h1>🧟 Rechen-Zombie-Angriff 🧟</h1>
+    <p>Löse Matheaufgaben, um die Zombies aufzuhalten!</p>
+    <button id="btn-start">Spiel starten</button>
+    <p class="highscore">Highscore: <span id="start-highscore">0</span></p>
+  </div>
+  <div id="game-screen" class="screen">
+    <div id="hud">
+      <span id="lives"></span>
+      <span id="score">0 Punkte</span>
+    </div>
+    <div id="timer-bar"><div id="timer-fill"></div></div>
+    <div id="zombie-area">
+      <div id="zombie-emoji"></div>
+      <div id="zombie-task"></div>
+    </div>
+    <div id="input-area">
+      <input type="text" id="answer-input" inputmode="numeric" autocomplete="off" placeholder="Antwort...">
+      <button id="btn-submit">Schießen! 💥</button>
+    </div>
+    <div id="feedback"></div>
+  </div>
+  <div id="gameover-screen" class="screen">
+    <h1>💀 Game Over 💀</h1>
+    <p>Punkte: <span id="final-score">0</span></p>
+    <p>Highscore: <span id="final-highscore">0</span></p>
+    <p id="new-record" class="hidden">🎉 Neuer Rekord! 🎉</p>
+    <button id="btn-restart">Nochmal spielen</button>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
