@@ -1,34 +1,72 @@
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0f0a;color:#e0e0e0;font-family:system-ui,sans-serif;min-height:100vh;display:flex;justify-content:center;align-items:center}
-#app{width:100%;max-width:600px;min-width:320px;padding:20px;text-align:center}
-.screen{display:none}.screen.active{display:block}
-h1{font-size:2em;margin-bottom:20px;text-shadow:0 0 10px #00ff00}
-button{background:#1a3a1a;color:#00ff00;border:2px solid #00ff00;padding:12px 32px;font-size:1.2em;border-radius:8px;cursor:pointer;min-height:44px;min-width:44px;transition:background .2s}
-button:hover,button:active{background:#2a5a2a}
-.highscore{margin-top:20px;color:#888}
-#hud{display:flex;justify-content:space-between;font-size:1.3em;margin-bottom:10px}
-#timer-bar{width:100%;height:12px;background:#333;border-radius:6px;overflow:hidden;margin-bottom:20px}
+html,body{height:100%;overflow:hidden;touch-action:manipulation}
+body{background:#0a0f0a;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif;display:flex;justify-content:center;align-items:flex-start}
+#app{width:100%;max-width:600px;padding:12px;text-align:center;height:var(--vh,100dvh);display:flex;flex-direction:column;justify-content:center}
+.screen{display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex:1}
+.screen.active{display:flex}
+h1{font-size:1.6em;text-shadow:0 0 10px #00ff00}
+.rules{list-style:none;text-align:left;margin:8px auto;font-size:1em;line-height:1.8}
+button{background:#1a3a1a;color:#00ff00;border:2px solid #00ff00;padding:14px 32px;font-size:1.2em;border-radius:8px;cursor:pointer;min-height:48px;min-width:48px;transition:background .15s;-webkit-tap-highlight-color:transparent;user-select:none}
+button:active{background:#3a7a3a;transform:scale(0.96)}
+.highscore{color:#888;font-size:0.9em}
+
+/* HUD */
+#hud{display:flex;justify-content:space-between;font-size:1.2em;width:100%}
+#timer-bar{width:100%;height:10px;background:#333;border-radius:5px;overflow:hidden}
 #timer-fill{height:100%;width:100%;background:#00ff00;transition:width .1s linear,background .3s}
 #timer-fill.yellow{background:#ffcc00}
 #timer-fill.red{background:#ff3333}
-#zombie-area{background:#1a1a2e;border:2px solid #333;border-radius:12px;padding:30px 20px;margin-bottom:20px;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-#zombie-emoji{font-size:4em;margin-bottom:15px}
-#zombie-task{font-size:2em;font-weight:bold;color:#fff}
-#input-area{display:flex;gap:10px;justify-content:center}
-#answer-input{background:#111;color:#fff;border:2px solid #00ff00;padding:10px 15px;font-size:1.3em;border-radius:8px;width:60%;min-height:44px;text-align:center}
-#answer-input:focus{outline:none;border-color:#00ff88;box-shadow:0 0 8px #00ff0066}
-#gameover-screen p{font-size:1.3em;margin:10px 0}
-#new-record{color:#ffd700;font-size:1.5em;animation:pulse 1s infinite}
-.hidden{display:none!important}
 
-@keyframes slideIn{from{transform:translateX(100%) scale(0.5);opacity:0}to{transform:translateX(0) scale(1);opacity:1}}
-@keyframes hit{0%{background:#1a1a2e}50%{background:#004400}100%{background:#1a1a2e}}
-@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+/* Zombie Area */
+#zombie-area{background:#1a1a2e;border:2px solid #333;border-radius:12px;padding:16px 12px;width:100%;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#zombie-emoji{font-size:3em;line-height:1.2}
+#zombie-task{font-size:1.8em;font-weight:bold;color:#fff;margin-top:8px}
 
-#zombie-area.slide-in{animation:slideIn .4s ease-out}
-#zombie-area.hit{animation:hit .4s}
-#zombie-area.shake{animation:shake .4s}
-#feedback{font-size:1.3em;min-height:2em;margin-top:15px;font-weight:bold}
+/* Feedback */
+#feedback{font-size:1.1em;min-height:1.5em;font-weight:bold}
 #feedback.correct{color:#00ff00}
 #feedback.wrong{color:#ff3333}
+
+/* Input Area */
+#input-area{display:flex;gap:8px;width:100%;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0)}
+#answer-input{background:#111;color:#fff;border:2px solid #00ff00;padding:12px;font-size:16px;border-radius:8px;flex:1;min-height:48px;text-align:center;-webkit-appearance:none;-moz-appearance:textfield}
+#answer-input::-webkit-inner-spin-button,#answer-input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+#answer-input:focus{outline:none;border-color:#00ff88;box-shadow:0 0 8px #00ff0066}
+#btn-submit{flex-shrink:0;padding:12px 16px;font-size:1em}
+
+/* Game Over */
+#gameover-screen p{font-size:1.2em;margin:6px 0}
+#new-record{color:#ffd700;font-size:1.4em;animation:pulse 1s infinite}
+.hidden{display:none!important}
+
+/* Animations */
+@keyframes slideIn{from{transform:translateX(80px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes hit{0%{background:#1a1a2e}50%{background:#004400}100%{background:#1a1a2e}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+#zombie-area.slide-in{animation:slideIn .3s ease-out}
+#zombie-area.hit{animation:hit .4s}
+#zombie-area.shake{animation:shake .4s}
+
+/* Game screen layout */
+#game-screen{justify-content:space-between;padding:8px 0}
+#game-screen>*{width:100%}
+
+/* Responsive: larger screens */
+@media(min-width:500px){
+  h1{font-size:2em}
+  #zombie-emoji{font-size:4em}
+  #zombie-task{font-size:2.2em}
+  #zombie-area{min-height:160px;padding:24px}
+  #answer-input{font-size:1.3em}
+}
+
+/* Very small screens (iPhone SE etc) */
+@media(max-height:600px){
+  #app{padding:6px;gap:4px}
+  #zombie-area{min-height:90px;padding:10px}
+  #zombie-emoji{font-size:2.2em}
+  #zombie-task{font-size:1.4em}
+  h1{font-size:1.3em}
+  #feedback{min-height:1.2em;font-size:0.95em}
+}

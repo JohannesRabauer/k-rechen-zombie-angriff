@@ -2,7 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0f0a">
+<meta name="mobile-web-app-capable" content="yes">
 <title>Rechen-Zombie-Angriff</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -11,8 +15,13 @@
   <div id="start-screen" class="screen active">
     <h1>🧟 Rechen-Zombie-Angriff 🧟</h1>
     <p>Löse Matheaufgaben, um die Zombies aufzuhalten!</p>
+    <ul class="rules">
+      <li>❤️ 3 Leben</li>
+      <li>⏰ Löse die Aufgabe bevor die Zeit abläuft</li>
+      <li>🧟 Besiege Zombies für Punkte</li>
+    </ul>
     <button id="btn-start">Spiel starten</button>
-    <p class="highscore">Highscore: <span id="start-highscore">0</span></p>
+    <p class="highscore">🏆 Highscore: <span id="start-highscore">0</span></p>
   </div>
   <div id="game-screen" class="screen">
     <div id="hud">
@@ -24,17 +33,17 @@
       <div id="zombie-emoji"></div>
       <div id="zombie-task"></div>
     </div>
+    <div id="feedback"></div>
     <div id="input-area">
-      <input type="text" id="answer-input" inputmode="numeric" autocomplete="off" placeholder="Antwort...">
+      <input type="number" id="answer-input" inputmode="numeric" pattern="-?[0-9]*" autocomplete="off" placeholder="Antwort...">
       <button id="btn-submit">Schießen! 💥</button>
     </div>
-    <div id="feedback"></div>
   </div>
   <div id="gameover-screen" class="screen">
     <h1>💀 Game Over 💀</h1>
     <p>Punkte: <span id="final-score">0</span></p>
     <p>Highscore: <span id="final-highscore">0</span></p>
-    <p id="new-record" class="hidden">🎉 Neuer Rekord! 🎉</p>
+    <p id="new-record" class="hidden">🏆 Neuer Rekord! 🏆</p>
     <button id="btn-restart">Nochmal spielen</button>
   </div>
 </div>
